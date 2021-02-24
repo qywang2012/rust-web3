@@ -11,7 +11,7 @@ pub struct BlockHeader {
     pub parent_hash: H256,
     /// Hash of the uncles
     #[serde(rename = "sha3Uncles")]
-    pub uncles_hash: H256,
+    pub uncles_hash: Option<H256>,
     /// Miner/author's address.
     #[serde(rename = "miner")]
     pub author: H160,
@@ -23,7 +23,7 @@ pub struct BlockHeader {
     pub transactions_root: H256,
     /// Transactions receipts root hash
     #[serde(rename = "receiptsRoot")]
-    pub receipts_root: H256,
+    pub receipts_root: Option<H256>,
     /// Block number. None if pending.
     pub number: Option<U64>,
     /// Gas Used
@@ -60,7 +60,7 @@ pub struct Block<TX> {
     pub parent_hash: H256,
     /// Hash of the uncles
     #[serde(rename = "sha3Uncles")]
-    pub uncles_hash: H256,
+    pub uncles_hash: Option<H256>,
     /// Miner/author's address.
     #[serde(rename = "miner")]
     pub author: H160,
@@ -72,7 +72,7 @@ pub struct Block<TX> {
     pub transactions_root: H256,
     /// Transactions receipts root hash
     #[serde(rename = "receiptsRoot")]
-    pub receipts_root: H256,
+    pub receipts_root: Option<H256>,
     /// Block number. None if pending.
     pub number: Option<U64>,
     /// Gas Used
