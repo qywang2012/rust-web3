@@ -107,7 +107,7 @@ pub struct Block<TX> {
     #[serde(rename = "mixHash")]
     pub mix_hash: Option<H256>,
     /// Nonce
-    pub nonce: Option<H64>,
+    pub nonce: Option<U256>,
 }
 
 /// Block Number
