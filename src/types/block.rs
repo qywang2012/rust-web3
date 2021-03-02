@@ -100,7 +100,7 @@ pub struct Block<TX> {
     /// Uncles' hashes
     pub uncles: Vec<H256>,
     /// Transactions
-    pub transactions: Vec<TX>,
+    pub transactions: Option<Vec<TX>>,
     /// Size in bytes
     pub size: Option<U256>,
     /// Mix Hash
