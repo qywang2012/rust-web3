@@ -100,7 +100,8 @@ pub struct Block<TX> {
     /// Uncles' hashes
     pub uncles: Vec<H256>,
     /// Transactions
-    pub transactions: Option<Vec<TX>>,
+    #[serde(deserialize_with = "deserialize_null_default")]
+    pub transactions: Vec<TX>,
     /// Size in bytes
     pub size: Option<U256>,
     /// Mix Hash
@@ -108,6 +109,15 @@ pub struct Block<TX> {
     pub mix_hash: Option<H256>,
     /// Nonce
     pub nonce: Option<U256>,
+}
+
+fn deserialize_null_default<'de, D, T>(deserializer: D) -> Result<T, D::Error>
+where
+    T: Default + Deserialize<'de>,
+    D: Deserializer<'de>,
+{
+    let opt = Option::deserialize(deserializer)?;
+    Ok(opt.unwrap_or_default())
 }
 
 /// Block Number
