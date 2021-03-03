@@ -100,6 +100,7 @@ pub struct Block<TX> {
     /// Uncles' hashes
     pub uncles: Vec<H256>,
     /// Transactions
+    #[serde(bound(deserialize = "Vec<TX>: Deserialize<'de>"))]
     #[serde(deserialize_with = "deserialize_null_default")]
     pub transactions: Vec<TX>,
     /// Size in bytes
